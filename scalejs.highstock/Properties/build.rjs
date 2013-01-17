@@ -1,0 +1,12 @@
+﻿({
+	mainConfigFile: '../bootstrapper.js',
+	include: [
+        'scalejs.highstock'
+    ],
+    exclude: [
+        'scalejs!core',
+		'knockout',
+		'knockout.mapping',
+		'highstock'
+    ]
+})
