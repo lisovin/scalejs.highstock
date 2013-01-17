@@ -1181,6 +1181,7 @@ pathAnim = {
 		 * @param {Function} handler The function to remove
 		 */
 		removeEvent: function (el, eventType, handler) {
+            if (!el) return;
 			// workaround for jQuery issue with unbinding custom events:
 			// http://forum.jQuery.com/topic/javascript-error-when-unbinding-a-custom-event-using-jQuery-1-4-2
 			var func = doc.removeEventListener ? 'removeEventListener' : 'detachEvent';

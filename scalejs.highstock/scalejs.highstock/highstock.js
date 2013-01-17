@@ -88,6 +88,7 @@ define([
                 forEach(subs, function (s) {
                     s.dispose();
                 });
+
                 chart.destroy();
             }
         };
