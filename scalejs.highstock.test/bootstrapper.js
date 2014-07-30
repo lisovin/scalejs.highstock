@@ -3,7 +3,7 @@
 /// <reference path="Scripts/jasmine.js"/>
 require({
     "paths":  {
-        "highstock":  "Scripts/highstock.src",
+        "highstock":  "Scripts/highstock",
         "jQuery":  "Scripts/jQuery-1.9.0",
         "knockout":  "Scripts/knockout-2.2.1",
         "knockout.mapping":  "Scripts/knockout.mapping-latest",

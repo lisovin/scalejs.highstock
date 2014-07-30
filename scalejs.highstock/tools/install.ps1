@@ -3,7 +3,7 @@
 $project | 
 	Add-Paths "{
 		'scalejs.highstock' : 'Scripts/scalejs.highstock-$($package.Version)',
-		'highstock'			: 'Scripts/highstock.src'
+		'highstock'			: 'Scripts/highstock'
 	}" |
 	Add-Shims "{
 		'highstock'			: {

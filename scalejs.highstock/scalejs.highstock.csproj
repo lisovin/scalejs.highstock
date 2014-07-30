@@ -14,7 +14,7 @@
     <Content Include="scalejs.highstock.js" />
     <Content Include="scalejs.highstock\highstock.js" />
     <Content Include="Scripts\almond.js" />
-    <Content Include="Scripts\highstock.src.js" />
+    <Content Include="Scripts\highstock.js" />
     <Content Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
@@ -32,7 +32,9 @@
     <Content Include="config.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.9.0.min.map" />
   </ItemGroup>
   <ItemGroup />
