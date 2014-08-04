@@ -90,7 +90,8 @@ define('scalejs.highstock/highstock',[
                 });
 
                 chart.destroy();
-            }
+            },
+            chart: chart //reference to chart
         };
     }
     /*jslint unparam: true*/
@@ -101,6 +102,11 @@ define('scalejs.highstock/highstock',[
     ) {
         var b = allBindingsAccessor(),
             disposable = createChart(b.highstock, element);
+
+        //attach chart reference to valueAccessor
+        if (valueAccessor.chart && ko.isObservable(valueAccessor.chart)) {
+            valueAccessor.chart(disposable.chart);
+        }
 
         if (isObservable(b.highstock.series)) {
             b.highstock.series.subscribe(function (newSeries) {
