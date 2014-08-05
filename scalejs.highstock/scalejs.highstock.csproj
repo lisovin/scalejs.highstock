@@ -10,7 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Properties\build.rjs" />
-    <Content Include="Properties\scalejs.highstock.nuspec" />
+    <Content Include="Properties\scalejs.highstock.nuspec">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="scalejs.highstock.js" />
     <Content Include="scalejs.highstock\highstock.js" />
     <Content Include="Scripts\almond.js" />
@@ -37,7 +39,9 @@
     </None>
     <None Include="Scripts\jquery-1.9.0.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="scalejs.highstock\themes\" />
+  </ItemGroup>
   <PropertyGroup>
     <ScalejsProjectType>Extension</ScalejsProjectType>
   </PropertyGroup>

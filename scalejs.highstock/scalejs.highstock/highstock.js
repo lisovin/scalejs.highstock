@@ -2,14 +2,26 @@
 define([
     'scalejs!core',
     'knockout',
-    'highstock'
+    'highstock',
+    'darkTheme',
+    'lightTheme'
 ], function (
     core,
     ko,
-    highstock
+    highstock,
+    darkTheme,
+    lightTheme
 ) {
     'use strict';
 
+    var themes = {
+        dark: darkTheme,
+        light: lightTheme
+    };
+
+    var DARK = 'dark',
+        LIGHT = 'light';
+    
     // aliases
     var unwrap = ko.utils.unwrapObservable,
         isObservable = ko.isObservable,
@@ -100,12 +112,51 @@ define([
         valueAccessor,
         allBindingsAccessor
     ) {
-        var b = allBindingsAccessor(),
-            disposable = createChart(b.highstock, element);
+        //theme first
+        if (valueAccessor().theme !== undefined) {
+            var theme = ko.utils.unwrapObservable(valueAccessor().theme);
 
-        //attach chart reference to valueAccessor
-        if (valueAccessor.chart && ko.isObservable(valueAccessor.chart)) {
-            valueAccessor.chart(disposable.chart);
+            if (theme === DARK) {
+                console.debug('highstock dark theme');
+                Highcharts.setOptions(themes.dark);
+            } else if (theme === LIGHT) {
+                console.debug('highstock light theme');
+                Highcharts.setOptions(themes.light);
+            }
+        }
+
+        var b = allBindingsAccessor(),
+            disposable = createChart(b.highstock, element),
+            msg = ''; //loading msg
+
+        //grab the message
+        if (valueAccessor().loadingMessage) {
+            msg = ko.utils.unwrapObservable(valueAccessor().loadingMessage);
+        }
+
+        //if observable is provided to keep track of loading, implement the loading feature
+        if (valueAccessor().isLoading !== undefined && isObservable(valueAccessor().isLoading)) {
+            if (!valueAccessor().isLoading()) {
+                if (msg !== '') {
+                    disposable.chart.showLoading(msg);
+                }
+
+                disposable.chart.showLoading()
+            }
+
+            //set up loading subscription
+            valueAccessor().isLoading.subscribe(function (x) {
+                if (x) {
+                    if (msg !== '') {
+                        disposable.chart.showLoading(msg);
+                    }
+                    else {
+                        disposable.chart.showLoading();
+                    }
+                } else {
+                    disposable.chart.hideLoading();
+                }
+            });
         }
 
         if (isObservable(b.highstock.series)) {
