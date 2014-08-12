@@ -133,6 +133,11 @@ define('scalejs.highstock/highstock',[
             disposable = createChart(b.highstock, element),
             msg = ''; //loading msg
 
+        //attach chart reference to valueAccessor
+        if (valueAccessor.chart && ko.isObservable(valueAccessor.chart)) {
+            valueAccessor.chart(disposable.chart);
+        }
+
         //grab the message
         if (valueAccessor().loadingMessage) {
             msg = ko.utils.unwrapObservable(valueAccessor().loadingMessage);
