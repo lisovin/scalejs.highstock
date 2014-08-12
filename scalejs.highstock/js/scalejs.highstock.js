@@ -4,23 +4,27 @@ define('scalejs.highstock/highstock',[
     'knockout',
     'highstock',
     'darkTheme',
-    'lightTheme'
+    'lightTheme',
+    'EikosTheme'
 ], function (
     core,
     ko,
     highstock,
     darkTheme,
-    lightTheme
+    lightTheme,
+    EikosTheme
 ) {
     
 
     var themes = {
         dark: darkTheme,
-        light: lightTheme
+        light: lightTheme,
+        Eikos: EikosTheme
     };
 
     var DARK = 'dark',
-        LIGHT = 'light';
+        LIGHT = 'light',
+        EIKOS = 'eikos';
     
     // aliases
     var unwrap = ko.utils.unwrapObservable,
@@ -117,11 +121,11 @@ define('scalejs.highstock/highstock',[
             var theme = ko.utils.unwrapObservable(valueAccessor().theme);
 
             if (theme === DARK) {
-                console.debug('highstock dark theme');
                 Highcharts.setOptions(themes.dark);
             } else if (theme === LIGHT) {
-                console.debug('highstock light theme');
                 Highcharts.setOptions(themes.light);
+            } else if (theme === EIKOS) {
+                Highcharts.setOptions(themes.Eikos);
             }
         }
 
