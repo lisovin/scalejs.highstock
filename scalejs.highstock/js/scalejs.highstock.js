@@ -134,8 +134,8 @@ define('scalejs.highstock/highstock',[
             msg = ''; //loading msg
 
         //attach chart reference to valueAccessor
-        if (valueAccessor.chart && ko.isObservable(valueAccessor.chart)) {
-            valueAccessor.chart(disposable.chart);
+        if (valueAccessor().ref && ko.isObservable(valueAccessor().ref)) {
+            valueAccessor().ref(disposable.chart);
         }
 
         //grab the message

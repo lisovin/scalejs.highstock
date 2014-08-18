@@ -19659,7 +19659,7 @@ Scroller.prototype = {
 				.add();
 
 			// the rectangle
-			tempElem = renderer.rect(-4.5, 0, 9, 16, 0, 1)
+			tempElem = renderer.rect(-6, -12, 12, 41, 0, 1)
 				.attr(attr)
 				.add(handles[index]);
 			elementsToDestroy.push(tempElem);

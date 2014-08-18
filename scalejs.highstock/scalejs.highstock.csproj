@@ -28,6 +28,9 @@
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\scalejs-0.3.0.1.js" />
     <Content Include="Scripts\scalejs-0.3.0.1.min.js" />
+    <Content Include="Scripts\themes\dark.js" />
+    <Content Include="Scripts\themes\eikos.js" />
+    <Content Include="Scripts\themes\light.js" />
     <Content Include="Scripts\_scalejs.intellisense.js" />
     <Content Include="tools\install.ps1" />
     <Content Include="tools\uninstall.ps1" />
@@ -39,9 +42,7 @@
     </None>
     <None Include="Scripts\jquery-1.9.0.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="scalejs.highstock\themes\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <ScalejsProjectType>Extension</ScalejsProjectType>
   </PropertyGroup>
